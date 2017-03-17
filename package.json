@@ -15,7 +15,7 @@
   "dist-win": "build --win",
   "pack": "build --dir",
   "dist": "npm run dist-deb && npm run dist-rpm && npm run dist-arch && npm run dist-win && npm run dist-apk && npm run dist-mac",
-  "clean": "rm -rf dist node_modules tmp src",
+  "clean": "rm -rf dist node_modules tmp",
   "build": {
     "appId": "nlesc",
     "mac": {
