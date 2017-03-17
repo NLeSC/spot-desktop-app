@@ -6,7 +6,7 @@
   "main": "main.js",
   "scripts": {
   "start": "electron .",
-  "get-spot": "svn export https://github.com/NLeSC/spot/trunk/public src",
+  "get-spot": "svn export https://github.com/NLeSC/spot/trunk/public src && rm -rf src/data",
   "dist-deb": "build --linux deb",
   "dist-rpm": "build --linux rpm",
   "dist-apk": "build --linux apk",
