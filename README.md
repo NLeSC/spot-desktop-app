@@ -4,9 +4,14 @@
 
 * install **node.js**
 
-* Clone this repository
+* clone this repository
   ```bash
   git clone https://github.com/fdiblen/spot-desktop.git && cd spot-desktop
+  ```
+
+* get latest version of SPOT:
+  ```bash
+  npm run get-spot
   ```
 
 * install dependencies:
@@ -14,7 +19,7 @@
   npm install
   ```
 
-* build binaries:
+* build packages:
   ```bash
-  npm run build-all
+  npm run dist
   ```

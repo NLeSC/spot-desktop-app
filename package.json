@@ -1,28 +1,31 @@
 {
   "name": "SPOT-Desktop",
+  "description": "SPOT Desktop application",
+  "author": "Faruk Diblen <f.diblen@esciencecenter.nl>",
   "version": "0.1.0",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
-    "get-spot": "svn export https://github.com/NLeSC/spot/trunk/public src",
-    "build-linux": "electron-packager . spot-desktop --platform linux --arch x64 --out dist/ --tmpdir tmp/",
-    "build-all": "electron-packager . spot-desktop --all --out dist/ --tmpdir tmp/",
-    "pre-create-packages": "mkdir -p dist/installers/",
-    "create-packages": "mkdir -p dist/installers && npm run package-deb64 && npm run package-rpm64 && npm run package-windows",
-    "package-deb64": "electron-installer-debian --src dist/spot-desktop-linux-x64/ --dest dist/installers/ --arch amd64",
-    "package-rpm64": "electron-installer-redhat --src dist/spot-desktop-linux-x64/ --dest dist/installers/ --arch x86_64",
-    "package-windows": "electron-installer-windows --src dist/spot-desktop-win32-x64/ --dest dist/installers/",
-    "clean": "rm -rf dist node_modules tmp src"
+  "start": "electron .",
+  "get-spot": "svn export https://github.com/NLeSC/spot/trunk/public src",
+  "dist-deb": "build --linux deb",
+  "dist-rpm": "build --linux rpm",
+  "dist-apk": "build --linux apk",
+  "dist-arch": "build --linux pacman",
+  "dist-mac": "build --mac",
+  "dist-win": "build --win",
+  "pack": "build --dir",
+  "dist": "npm run dist-deb && npm run dist-rpm && npm run dist-arch && npm run dist-win && npm run dist-apk && npm run dist-mac",
+  "clean": "rm -rf dist node_modules tmp src",
+  "build": {
+    "appId": "nlesc",
+    "mac": {
+      "category": "spot.science"
+    }
+  }
   },
   "devDependencies": {
-    "electron-installer-redhat": "*",
-    "electron-installer-debian": "*",
-    "electron-installer-windows": "*",
-    "electron-packager": "*",
-    "electron-prebuilt": "*"
-  },
-  "dependencies": {
+    "ajv": "^5.0.4-beta.0",
     "electron": "^1.6.2",
-    "electron-packager": "^8.6.0"
+    "electron-builder": "^15.6.1"
   }
 }
