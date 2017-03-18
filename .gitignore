@@ -1,4 +1,4 @@
-scripts/*
-node_modules/*
-dist/*
+scripts/
+node_modules/
+dist/
 
