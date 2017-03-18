@@ -1,15 +1,14 @@
 {
-  "name": "SPOT-Desktop",
+  "name": "spot-desktop",
   "description": "SPOT Desktop application",
   "author": "Faruk Diblen <f.diblen@esciencecenter.nl>",
   "version": "0.1.0-alpha.1",
   "main": "main.js",
   "scripts": {
   "start": "electron .",
-  "get-spot": "svn export https://github.com/NLeSC/spot/trunk/public src && rm -rf src/data && mv src/doc docs",
+  "get-spot": "svn export https://github.com/NLeSC/spot/trunk/public src && rm -rf src/data && mkdir -p docs && mv src/doc/spot docs/spot",
   "dist-deb": "build --linux deb",
   "dist-rpm": "build --linux rpm",
-  "dist-apk": "build --linux apk",
   "dist-arch": "build --linux pacman",
   "dist-mac": "build --mac",
   "dist-win": "build --win",
