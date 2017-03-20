@@ -1,5 +1,7 @@
 # SPOT Desktop Application
 
+## Please check [release page](https://github.com/fdiblen/spot-desktop-app/releases) for downloads.
+
 #### **SPOT-Desktop is still under development**
 
 * install **node.js**
