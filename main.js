@@ -6,14 +6,15 @@ let win
 
 function createWindow () {
   win = new BrowserWindow({
-    width: 1100, height: 800
+    width: 1400, height: 900,
+    icon: './images/flask.svg'
 //    , fullscreen: true
   })
 
   // diable menu bar
   win.setMenu(null);
 
-  win.maximize();
+//  win.maximize();
 
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'src/index.html'),

@@ -2,7 +2,7 @@
   "name": "spot-desktop",
   "description": "SPOT Desktop application",
   "author": "Faruk Diblen <f.diblen@esciencecenter.nl>",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -13,11 +13,11 @@
   "scripts": {
     "start": "electron .",
     "get-spot": "svn export https://github.com/NLeSC/spot/trunk temp && mv temp/dist src && rm -rf temp",
-    "dist-linux": "build --linux deb pacman rpm zip tar.xz",
+    "dist-linux": "build --linux deb pacman zip tar.xz",
     "dist-mac": "build --mac dmg pkg zip",
     "dist-win": "build --win",
     "dist": "npm run dist-linux && npm run dist-win && npm run dist-mac",
-    "clean": "rm -rf dist node_modules tmp",
+    "clean": "rm -rf dist node_modules temp src",
     "build": {
       "appId": "spot.nlesc",
       "mac": {
