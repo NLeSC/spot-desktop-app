@@ -10,24 +10,37 @@
   },
   "homepage": "https://github.com/NLeSC/spot.git",
   "main": "main.js",
-  "scripts": {
-    "start": "electron .",
-    "get-spot": "svn export https://github.com/NLeSC/spot/trunk temp && mv temp/dist src && rm -rf temp",
-    "dist-linux": "build --linux deb pacman zip tar.xz",
-    "dist-mac": "build --mac dmg pkg zip",
-    "dist-win": "build --win",
-    "dist": "npm run dist-linux && npm run dist-win && npm run dist-mac",
-    "clean": "rm -rf dist node_modules temp src",
-    "build": {
-      "appId": "spot.nlesc",
-      "mac": {
-        "category": "spot.science"
-      }
+  "artifactName": "${productName}-${os}-${arch}-${version}.${ext}",
+  "build": {
+    "appId": "nl.esciencecenter.spot",
+    "artifactName": "${productName}-${os}-${arch}-${version}.${ext}",
+    "mac": {
+      "category": "public.app-category.science"
+    },
+    "linux": {
+      "category": "GNOME;GTK;Science;"
+    },
+    "portable": {
+      "artifactName": "${productName}_Portable_${version}.${ext}"
     }
   },
+  "scripts": {
+    "start": "electron --inspect --enable-logging .",
+    "get-spot": "svn export https://github.com/NLeSC/spot/trunk temp && mv temp/dist src && rm -rf temp",
+    "electron-pack-win": "electron-builder --win portable --em.main=./main.js",
+    "electron-pack-lin": "electron-builder --linux deb pacman zip tar.xz tar.gz --em.main=./main.js",
+    "electron-pack-mac": "electron-builder --mac zip --em.main=./main.js",
+    "electron-pack": "npm run electron-pack-lin && npm run electron-pack-mac && npm run electron-pack-win",
+    "preelectron-pack": "npm run clean && npm install && npm run get-spot",
+    "postinstall": "electron-builder install-app-deps",
+    "dist": "npm run electron-pack",
+    "clean": "rm -rf dist node_modules src"
+  },
   "devDependencies": {
-    "ajv": "^5.0.4-beta.0",
     "electron": "^1.7.8",
-    "electron-builder": "^15.6.4"
+    "electron-builder": "^19.34.1"
+  },
+  "dependencies": {
+    "concurrently": "^3.5.0"
   }
 }

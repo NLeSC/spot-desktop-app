@@ -11871,48 +11871,70 @@ _:-ms-input-placeholder, :root .demo-graph {
   margin-right: 5px;
 }
 .mdl-layout__drawer {
+  overflow: hidden;
+  width: 40px;
   -webkit-transform: translateX(0);
   -moz-transform: translateX(0);
   -ms-transform: translateX(0);
   transform: translateX(0);
-  z-index: 1;
+  border: 0px;
   box-shadow: none;
-  border-right: 0;
+  -webkit-transition: 200ms 200ms width ease-in-out;
+  -o-transition: 200ms 200ms width ease-in-out;
+  transition: 200ms 200ms width ease-in-out;
+  -moz-transition: 200ms 200ms width ease-in-out;
+}
+.mdl-layout__drawer .mdl-navigation__link span {
+  opacity: 0;
+  -webkit-transition: 200ms 200ms opacity ease-in-out;
+  -o-transition: 200ms 200ms opacity ease-in-out;
+  transition: 200ms 200ms opacity ease-in-out;
+  -moz-transition: 200ms 200ms opacity ease-in-out;
+}
+.mdl-layout__drawer + .mdl-layout__header,
+.mdl-layout__drawer ~ .mdl-layout__content {
+  -webkit-transition: 200ms 200ms margin-left ease-in-out;
+  -o-transition: 200ms 200ms margin-left ease-in-out;
+  transition: 200ms 200ms margin-left ease-in-out;
+  -moz-transition: 200ms 200ms margin-left ease-in-out;
+}
+.mdl-layout__drawer.is-expanded {
   width: 240px;
 }
-.mdl-layout__drawer.is-expanded + .mdl-layout__header {
-  margin-left: 212px !important;
+.mdl-layout__drawer.is-expanded .mdl-navigation__link span {
+  opacity: 1;
 }
-.mdl-layout__drawer.is-expanded + .mdl-layout__header:before {
-  width: 0;
-  left: 200px;
+.mdl-layout__drawer.is-expanded + .mdl-layout__header {
+  margin-left: 240px !important;
 }
 .mdl-layout__drawer.is-expanded ~ .mdl-layout__content {
-  margin-left: 212px !important;
+  margin-left: 240px !important;
 }
-.mdl-layout__drawer.is-expanded ~ .mdl-layout__content:before {
-  width: 0;
-  left: 200px;
-}
+.mdl-layout__header,
 .mdl-layout__content {
-  margin-left: 28px !important;
+  margin-left: 0px !important;
+}
+.mdl-navigation {
+  width: 240px;
 }
 .mdl-layout__header-row {
-  padding: 0 16px 0 22px;
+  padding: 0 0 0 20px;
 }
-.mdl-layout__drawer-button {
-  display: none;
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
+  padding-left: 0px;
 }
-.mdl-layout__drawer .mdl-navigation {
-  padding: 0px;
+.mdl-layout__content {
+  margin-left: 20px !important;
 }
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover {
   background-color: rgba(255,255,255,0.5);
 }
-.mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
-  padding-left: 10px;
-}
 .mdl-mega-footer__middle-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mdl-mega-footer__heading {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11942,6 +11964,8 @@ _:-ms-input-placeholder, :root .demo-graph {
 .menuText {
   font-size: 20px;
   text-align: justify;
+  position: relative;
+  bottom: 5px;
   color: #fff;
   padding-left: 20px;
   text-decoration: none;
@@ -12039,7 +12063,19 @@ ul {
   background: #131313;
   padding: 30px;
   color: #000;
+}
+.spot-footer {
+  padding: 0px;
+  color: #000;
   font-size: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.spot-footer-item {
+  padding-left: 1%;
+  padding-right: 1%;
 }
 .spot-color1 {
   background: #e0e3e5;
