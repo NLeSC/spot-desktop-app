@@ -1,44 +1,10 @@
 # SPOT Desktop Application
 
-## Please check [release page](https://github.com/fdiblen/spot-desktop-app/releases) for downloads.
-
-#### **SPOT-Desktop is still under development**
-
-* install **node.js**
-  - Ubuntu
-    ```bash
-    curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
-    sudo apt-get install -y nodejs
-    ```
-  - Fedora
-    ```bash
-    curl --silent --location https://rpm.nodesource.com/setup_7.x | bash -
-    yum -y install nodejs
-    ```
-  - Arch Linux
-    ```bash
-    pacman -S nodejs npm
-    ```
-
-  - For Windows check [nodejs](https://nodejs.org/en/download/package-manager/#windows) page.
+This is a desktop version of [SPOT](https://github.com/NLeSC/spot).
 
 
-* clone this repository
-  ```bash
-  git clone https://github.com/fdiblen/spot-desktop.git && cd spot-desktop
-  ```
+SPOT is an interactive, fast, web-based visual analytics tool. It was primarily designed as data exploration and analysis tool for complex multidimensional datasets. It can be used to create and share dashboards to visualize tabular data stored in relational databases, or CSV and JSON files.
 
-* get latest version of SPOT:
-  ```bash
-  npm run get-spot
-  ```
+SPOT uses common visual analytics ideas like multiple coordinated views and drill down. It is also possible to connect to a Postresql database server to analyze big datasets.
 
-* install dependencies:
-  ```bash
-  npm install
-  ```
-
-* build packages:
-  ```bash
-  npm run dist
-  ```
+## Please check [releases page](https://github.com/NLeSC/spot-desktop-app/releases) for available downloads.
