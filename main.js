@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron')
+const {app, Menu, BrowserWindow} = require('electron')
 const path = require('path')
 const url = require('url')
 
@@ -21,7 +21,7 @@ function createWindow () {
       slashes: true
     }))
 
-    win.webContents.openDevTools()
+//    win.webContents.openDevTools()
 
     // Emitted when the window is closed.
     win.on('closed', () => {
@@ -29,7 +29,35 @@ function createWindow () {
     })
 }
 
-app.on('ready', createWindow)
+// app.on('ready', createWindow)
+
+
+app.on('ready', () => {
+  createWindow();
+
+  // Check if we are on a MAC
+  if (process.platform === 'darwin') {
+    // Create our menu entries so that we can use MAC shortcuts
+    Menu.setApplicationMenu(Menu.buildFromTemplate([
+      {
+        label: 'Edit',
+        submenu: [
+          { role: 'undo' },
+          { role: 'redo' },
+          { type: 'separator' },
+          { role: 'cut' },
+          { role: 'copy' },
+          { role: 'paste' },
+          { role: 'pasteandmatchstyle' },
+          { role: 'delete' },
+          { role: 'selectall' }
+        ]
+      }
+    ]));
+  }
+});
+
+
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {

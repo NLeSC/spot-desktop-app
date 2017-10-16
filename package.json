@@ -26,14 +26,16 @@
   },
   "scripts": {
     "start": "electron --inspect --enable-logging .",
-    "get-spot": "svn export https://github.com/NLeSC/spot/trunk temp && mv temp/dist src && rm -rf temp",
+    "get-spot": "curl -fsSL https://github.com/nlesc/spot/archive/master.tar.gz | tar -xz 'spot-master/dist' --strip-components 1",
+    "get-spot-dev": "curl -fsSL http://github.com/nlesc/spot/zipball/dev/ | tar -xz 'spot-master/dist' --strip-components 1",
+    "postget-spot": "mv dist src",
     "electron-pack-win": "electron-builder --win portable --em.main=./main.js",
     "electron-pack-lin": "electron-builder --linux deb pacman zip tar.xz tar.gz --em.main=./main.js",
+    "electron-pack-lin-app": "electron-builder --linux AppImage --em.main=./main.js",
     "electron-pack-mac": "electron-builder --mac zip --em.main=./main.js",
     "electron-pack": "npm run electron-pack-lin && npm run electron-pack-mac && npm run electron-pack-win",
-    "preelectron-pack": "npm run clean && npm install && npm run get-spot",
-    "postinstall": "electron-builder install-app-deps",
-    "dist": "npm run electron-pack",
+    "dist": "npm run clean && npm install && npm run get-spot && npm run electron-pack",
+    "dist-dev": "npm run clean && npm install && npm run get-spot-dev && npm run electron-pack",
     "clean": "rm -rf dist node_modules src"
   },
   "devDependencies": {
