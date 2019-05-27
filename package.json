@@ -21,7 +21,7 @@
       "category": "GNOME;GTK;Science;"
     },
     "portable": {
-      "artifactName": "${productName}_Portable_${version}.${ext}"
+      "artifactName": "${productName}-windows-${version}.${ext}"
     }
   },
   "scripts": {
@@ -31,7 +31,7 @@
     "postget-spot": "mv dist src",
     "electron-pack-win": "electron-builder --win portable -c.extraMetadata.main=./main.js",
     "electron-pack-lin": "electron-builder --linux deb snap apk zip tar.gz -c.extraMetadata.main=./main.js",
-    "electron-pack-lin-app": "electron-builder --linux AppImage --em.main=./main.js",
+    "electron-pack-lin-app": "electron-builder --linux AppImage -c.extraMetadata.main=./main.js",
     "electron-pack-mac": "electron-builder --mac zip -c.extraMetadata.main=./main.js",
     "electron-pack": "npm run electron-pack-lin && npm run electron-pack-mac && npm run electron-pack-win",
     "dist": "npm run clean && npm install && npm run get-spot && npm run electron-pack",

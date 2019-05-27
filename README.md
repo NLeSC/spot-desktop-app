@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/85325423.svg)](https://zenodo.org/badge/latestdoi/85325423)
+
 # SPOT Desktop Application
 
 This is a desktop version of [SPOT](https://github.com/NLeSC/spot).
