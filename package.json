@@ -2,7 +2,7 @@
   "name": "spot-desktop",
   "description": "SPOT Desktop application",
   "author": "Faruk Diblen <f.diblen@esciencecenter.nl>",
-  "version": "0.1.1-beta",
+  "version": "0.2.0-beta",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -29,20 +29,20 @@
     "get-spot": "curl -fsSL https://github.com/nlesc/spot/archive/master.tar.gz | tar -xz 'spot-master/dist' --strip-components 1",
     "get-spot-dev": "curl -fsSL http://github.com/nlesc/spot/zipball/dev/ | tar -xz 'spot-master/dist' --strip-components 1",
     "postget-spot": "mv dist src",
-    "electron-pack-win": "electron-builder --win portable --em.main=./main.js",
-    "electron-pack-lin": "electron-builder --linux deb pacman zip tar.xz tar.gz --em.main=./main.js",
+    "electron-pack-win": "electron-builder --win portable -c.extraMetadata.main=./main.js",
+    "electron-pack-lin": "electron-builder --linux deb rpm pacman snap apk zip tar.gz -c.extraMetadata.main=./main.js",
     "electron-pack-lin-app": "electron-builder --linux AppImage --em.main=./main.js",
-    "electron-pack-mac": "electron-builder --mac zip --em.main=./main.js",
+    "electron-pack-mac": "electron-builder --mac zip -c.extraMetadata.main=./main.js",
     "electron-pack": "npm run electron-pack-lin && npm run electron-pack-mac && npm run electron-pack-win",
     "dist": "npm run clean && npm install && npm run get-spot && npm run electron-pack",
     "dist-dev": "npm run clean && npm install && npm run get-spot-dev && npm run electron-pack",
     "clean": "rm -rf dist node_modules src"
   },
   "devDependencies": {
-    "electron": "^1.7.8",
-    "electron-builder": "^19.34.1"
+    "electron": "^5.0.2",
+    "electron-builder": "^20.41.0"
   },
   "dependencies": {
-    "concurrently": "^3.5.0"
+    "concurrently": "^4.1.0"
   }
 }
